@@ -1,7 +1,7 @@
 const PurchaseOrder = require("./../models/PoModel");
 const Vendor = require("./../models/vendorModel");
 
-exports.CreatePO = async (req, res) => {
+exports.CreatePurchaseOrder = async (req, res) => {
   try {
     const {
       po_number,
@@ -37,6 +37,16 @@ exports.CreatePO = async (req, res) => {
     });
 
     return res.json({ status: "success", result: newPO }).status(200);
+  } catch (error) {
+    console.log("Error: ", error);
+    res.json({ error: error });
+  }
+};
+
+exports.GetAllPurchaseOrder = async (req, res) => {
+  try {
+    result = await PurchaseOrder.find();
+    res.status(200).json(result);
   } catch (error) {
     console.log("Error: ", error);
     res.json({ error: error });
