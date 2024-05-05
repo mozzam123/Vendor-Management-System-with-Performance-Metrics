@@ -10,6 +10,7 @@ router
 router
   .route("/purchase_orders/:id")
   .get(PoController.GetPurchaseOrder)
-  .put(PoController.updatePurchaseOrder);
+  .put(PoController.updatePurchaseOrder)
+  .delete(PoController.deletePurchaseOrder);
 
 module.exports = router;

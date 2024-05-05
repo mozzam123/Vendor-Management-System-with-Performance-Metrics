@@ -103,3 +103,17 @@ exports.updatePurchaseOrder = async (req, res) => {
     return res.status(500).json({ success: false, error: error });
   }
 };
+
+exports.deletePurchaseOrder = async (req, res) => {
+  const PurchaseOrderId = req.params.id;
+  try {
+    const PurchaseOrderData = await PurchaseOrder.findByIdAndDelete(
+      PurchaseOrderId
+    );
+    console.log(PurchaseOrderData);
+    return res.json({ result: "Purchase order data deleted" });
+  } catch (error) {
+    console.error("Error creating vendor:", error.errors);
+    return res.status(500).json({ success: false, error: "Id does not exist" });
+  }
+};
