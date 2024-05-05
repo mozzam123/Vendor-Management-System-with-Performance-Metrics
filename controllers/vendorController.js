@@ -23,8 +23,8 @@ exports.createVendor = async (req, res) => {
       });
     }
 
-    // Create a new Vendor instance
-    const newVendor = new Vendor({
+    // Create the vendor directly in the database
+    const newVendor = await Vendor.create({
       name,
       contact_details,
       address,
